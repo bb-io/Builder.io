@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <Product>Builder.io</Product>
+        <Description>Automate content localization and publishing with Builder.io.</Description>
+        <Version>1.1.3</Version>
+        <AssemblyVersion>$(Version).0</AssemblyVersion>
+        <FileVersion>$(Version).0</FileVersion>
+        <InformationalVersion>$(Version)</InformationalVersion>
+        <AssemblyName>Apps.BuilderIo</AssemblyName>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Blackbird.Applications.SDK.Blueprints" Version="1.0.2" />
+        <PackageReference Include="Blackbird.Applications.SDK.Extensions.FileManagement" Version="1.0.1" />
+        <PackageReference Include="Blackbird.Applications.Sdk.Utils" Version="1.0.25" />
+        <PackageReference Include="Blackbird.Filters" Version="1.2.9" />
+        <PackageReference Include="HtmlAgilityPack" Version="1.12.3" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+        <PackageReference Include="Polly" Version="8.2.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <EmbeddedResource Include="image/icon.png" />
+        <EmbeddedResource Include="../README.md" Link="README.md" />
+    </ItemGroup>
+
+    <Target Name="ValidateReleaseVersion" BeforeTargets="BeforeBuild">
+        <Error Condition="!$([System.Text.RegularExpressions.Regex]::IsMatch('$(Version)', '^\d+\.\d+\.\d+$'))"
+               Text="Use a numeric major.minor.patch Version and increment it for every distributed build; prerelease suffixes do not distinguish assembly versions." />
+        <Error Condition="'$(PreviousPublishedVersion)' != '' and $([MSBuild]::VersionLessThanOrEquals('$(Version)', '$(PreviousPublishedVersion)'))"
+               Text="Version must exceed PreviousPublishedVersion. Increment the numeric Version before packaging." />
+    </Target>
+
+</Project>

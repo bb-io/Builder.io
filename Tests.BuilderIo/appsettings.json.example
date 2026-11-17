@@ -1,0 +1,16 @@
+{
+  "ConnectionDefinition": {
+    "public_api_key": "",
+    "private_api_key": ""
+  },
+  "ProjectsConnectionDefinition": {
+    "access_token": ""
+  },
+  "ProjectsTest": {
+    "ProjectId": "",
+    "BranchName": "",
+    "RunId": "",
+    "Prompt": "Create a minimal test page with the text Blackbird integration test.",
+    "AllowAgentMutations": false
+  }
+}
