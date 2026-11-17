@@ -367,3 +367,9 @@ MigrationBackup/
 FodyWeavers.xsd
 
 */appsettings.json
+/Tests.BuilderIo/TestFiles/Output
+/Tests.BuilderIo/TestFiles/Input
+/Tests.BuilderIo/appsettings.json
+/Tests.BuilderIo/appsettings.json
+
+*oauth*.json
